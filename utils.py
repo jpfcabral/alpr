@@ -430,7 +430,6 @@ def get_plate_char(char_detections, classes, plate_type, adjust=True):
     #         if not char_detections[i].isdigit():
     #             return ''
 
-    print(char_detections)
     for char in char_detections:
         plate += char
 
