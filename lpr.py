@@ -24,7 +24,7 @@ class LPRNet:
 
         self.__net = cv2.dnn.readNetFromDarknet(self.__config_path, self.__weights_path)
         self.__net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA) if cuda_en else self.__net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
-        self.__net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU) if cuda_en else self.__net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+        self.__net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA) if cuda_en else self.__net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
         self.__lp_net_layer_names = self.__net.getLayerNames()
         self.__lp_net_disconnected_layers = [self.__lp_net_layer_names[i[0] - 1] for i in self.__net.getUnconnectedOutLayers()]
 
