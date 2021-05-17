@@ -287,7 +287,7 @@ def compara_resultados_placa(nome, detection_list, classes, plate_type):
     return 1 if nome_encontrado == nome_verdadeiro else 0
 
 
-def ajusta_char_placa(detection_list, classes_list, plate_type):
+def ajusta_char_placa(detection_list, classes_list, plate_type, adjust=True):
     """
 
     :param detection_list:
@@ -307,8 +307,9 @@ def ajusta_char_placa(detection_list, classes_list, plate_type):
 
     # print(len(nome_encontrado))
     # Ajusta os caracteres que se parecem
-    nome_encontrado = ajusta_letras(nome_encontrado)
-    nome_encontrado = ajusta_numeros(nome_encontrado)
+    if adjust:
+        nome_encontrado = ajusta_letras(nome_encontrado)
+        nome_encontrado = ajusta_numeros(nome_encontrado)
 
     # Caso a placa seja do modelo novo, é ajustado o 4º digito
     if not plate_type:
@@ -401,10 +402,10 @@ def cortar(image, detections_list):
     return plate_list
 
 
-def get_plate_char(char_detections, classes, plate_type):
+def get_plate_char(char_detections, classes, plate_type, adjust=True):
     plate = ''
     char_detections = sort_detections_by_x_value(char_detections)
-    char_detections = ajusta_char_placa(char_detections, classes, plate_type)
+    char_detections = ajusta_char_placa(char_detections, classes, plate_type, adjust=adjust)
 
     char_detections = list(char_detections)
 
@@ -429,6 +430,7 @@ def get_plate_char(char_detections, classes, plate_type):
     #         if not char_detections[i].isdigit():
     #             return ''
 
+    print(char_detections)
     for char in char_detections:
         plate += char
 

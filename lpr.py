@@ -64,11 +64,11 @@ class LPRNet:
         self.__net_width = width
         self.__net_height = height
 
-    def get_plate(self, plate_type):
+    def get_plate(self, plate_type, adjust=True):
         if len(self.__net_detections) != 7:
             return ''
         else:
-            return utils.get_plate_char(self.__net_detections, self.__names, plate_type)
+            return utils.get_plate_char(self.__net_detections, self.__names, plate_type, adjust=adjust)
 
     def __get_dimensions(self):
         """
