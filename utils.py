@@ -360,7 +360,7 @@ def ajusta_letras(letras):
       letras[i] = 'S'
     elif letras[i] == '8':
       letras[i] = 'B'
-     elif letras[i] == '3':
+    elif letras[i] == '3':
       letras[i] = 'C'
 
   return letras
