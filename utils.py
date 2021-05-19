@@ -380,6 +380,12 @@ def ajusta_numeros(numeros):
       numeros[i] = '8'
     elif numeros[i] == 'Q':
       numeros[i] = '0'
+    elif numeros[i] == 'A':
+      numeros[i] = '4'
+    elif numeros[i] == 'E':
+      numeros[i] = '3'
+    elif numeros[i] == 'S':
+      numeros[i] = '5'
   return numeros
 
 
