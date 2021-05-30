@@ -26,8 +26,8 @@ def find_objects(layer_list, confidence_threshold):
 
             # Verifica se a classe com maior confiança é maior que nosso limite de confiança
             if confidence > confidence_threshold:
-                x = bounding_boxes_values[0]
-                y = bounding_boxes_values[1]
+                x = bounding_boxes_values[0] if bounding_boxes_values[0] > 0 else 0
+                y = bounding_boxes_values[1] if bounding_boxes_values[1] > 0 else 0
                 w = bounding_boxes_values[2]
                 h = bounding_boxes_values[3]
                 detected_objects.append([class_id, confidence, x, y, w, h])
